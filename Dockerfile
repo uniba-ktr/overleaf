@@ -13,6 +13,8 @@ RUN sed -i 's/shell_escape = p/shell_escape = t/g' /usr/share/texlive/texmf-dist
 # Adding Uniba Style Files
 ADD UBScala /UBScala
 RUN cd UBScala && \
+    ls -la && \
+    chmod +x installttf.sh && \
     ./installttf.sh
 
 LABEL de.uniba.ktr.cadvisor.version=$VERSION \
