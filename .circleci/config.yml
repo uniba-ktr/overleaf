@@ -13,7 +13,7 @@ jobs:
 workflows:
   build-and-push:
     jobs:
-      - buildx:
+      - build:
           filters:
               tags:
                 only: /.*/
