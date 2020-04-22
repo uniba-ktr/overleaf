@@ -15,7 +15,7 @@ jobs:
     steps:
       - run:
           name: "Call microbadger's webhook"
-          command: https://hooks.microbadger.com/images/unibaktr/overleaf/gizyokiZzOAJ1aoILvmanv-Tt7Y=
+          command: curl -X POST https://hooks.microbadger.com/images/unibaktr/overleaf/gizyokiZzOAJ1aoILvmanv-Tt7Y=
 
 tag_filter: &tag_filter
   filters:
