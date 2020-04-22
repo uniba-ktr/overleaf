@@ -1,8 +1,12 @@
 FROM sharelatex/sharelatex:latest
+ARG VERSION=latest
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VCS_URL
 
 RUN apt-get update && \
-apt-get install -y --no-install-recommends texlive-full python3 python3-pip && \
-apt-get clean
+    apt-get install -y --no-install-recommends texlive-full python3 python3-pip && \
+    apt-get clean
 
 RUN pip3 install pygments
 
@@ -17,11 +21,11 @@ RUN cd UBScala && \
     chmod +x installttf.sh && \
     ./installttf.sh
 
-LABEL de.uniba.ktr.cadvisor.version=$VERSION \
-      de.uniba.ktr.cadvisor.name="Overleaf" \
-      de.uniba.ktr.cadvisor.docker.cmd="docker run --publish=80:80 --detach=true --name=overleaf unibaktr/overleaf" \
-      de.uniba.ktr.cadvisor.vendor="Marcel Grossmann" \
-      de.uniba.ktr.cadvisor.architecture=$TARGETPLATFORM \
-      de.uniba.ktr.cadvisor.vcs-ref=$VCS_REF \
-      de.uniba.ktr.cadvisor.vcs-url=$VCS_URL \
-      de.uniba.ktr.cadvisor.build-date=$BUILD_DATE
+LABEL de.uniba.ktr.overleaf.version=$VERSION \
+      de.uniba.ktr.overleaf.name="Overleaf" \
+      de.uniba.ktr.overleaf.docker.cmd="docker run --publish=80:80 --detach=true --name=overleaf unibaktr/overleaf" \
+      de.uniba.ktr.overleaf.vendor="Marcel Grossmann" \
+      de.uniba.ktr.overleaf.architecture=$TARGETPLATFORM \
+      de.uniba.ktr.overleaf.vcs-ref=$VCS_REF \
+      de.uniba.ktr.overleaf.vcs-url=$VCS_URL \
+      de.uniba.ktr.overleaf.build-date=$BUILD_DATE
