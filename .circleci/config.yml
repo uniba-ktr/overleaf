@@ -10,10 +10,24 @@ jobs:
       - checkout
       - run: make
 
+  badge:
+    machine: true
+    steps:
+      - run:
+          name: "Call microbadger's webhook"
+          command: https://hooks.microbadger.com/images/unibaktr/overleaf/gizyokiZzOAJ1aoILvmanv-Tt7Y=
+
+tag_filter: &tag_filter
+  filters:
+    tags:
+      only: /.*/
+
 workflows:
-  build-and-push:
+  build-and-badge:
     jobs:
       - build:
-          filters:
-              tags:
-                only: /.*/
+          <<: *tag_filter
+      - badge:
+          requires:
+            - build
+          <<: *tag_filter
